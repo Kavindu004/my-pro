@@ -1,5 +1,6 @@
 <?php
 $pageTitle = "Login - Farm Inventory"; 
+$bodyClass = "login-page-body"; // Define body class for login page
 include 'includes/header.php'; 
 ?>
 

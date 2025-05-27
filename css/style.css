@@ -426,3 +426,43 @@ table th {
     background-color: #4cae4c;
 }
 */
+
+/* === Login Page Blurred Background === */
+.login-page-body {
+    overflow: hidden; /* Prevents scrollbars if pseudo-element slightly overflows */
+    position: relative; /* For positioning the pseudo-element */
+}
+
+.login-page-body::before {
+    content: "";
+    position: fixed; /* Covers the entire viewport */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1; /* Position behind the content */
+
+    /* Placeholder background: Replace with your image URL */
+    /* Example using a farm-like gradient */
+    background: linear-gradient(135deg, #56ab2f 0%, #a8e063 60%, #86A8E7 100%); 
+    /* background-image: url('path/to/your/farm-background-image.jpg'); */
+    background-size: cover;
+    background-position: center;
+    
+    filter: blur(8px); /* Adjust blur amount as needed */
+    transform: scale(1.1); /* Optional: scale slightly to avoid blurred edges appearing due to blur */
+}
+
+/* Ensure login card is clearly visible on top */
+.login-card {
+    position: relative; /* Ensure z-index works if needed, though not strictly necessary if ::before is z-index: -1 */
+    z-index: 1; /* Make sure login card is above the ::before pseudo-element */
+    background-color: rgba(255, 255, 255, 0.9); /* Slightly transparent white for a frosted glass effect over the blur - adjust opacity as desired */
+    /* The existing box-shadow on .login-card will help it stand out */
+}
+
+/* Optional: If text inside login card becomes hard to read, ensure high contrast */
+.login-card h2,
+.login-card label {
+    /* color: #333; /* Ensure text color has good contrast if background is very light */
+}

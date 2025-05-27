@@ -6,4 +6,4 @@
     <title><?php echo isset($pageTitle) ? $pageTitle : 'Farm Inventory Management'; ?></title>
     <link rel="stylesheet" href="css/style.css">
 </head>
-<body>
+<body class="<?php echo isset($bodyClass) ? htmlspecialchars($bodyClass) : ''; ?>">
