@@ -1,0 +1,428 @@
+/* Basic Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f4f4f4;
+    padding: 20px; /* General padding for pages */
+}
+
+.container {
+    width: 80%;
+    margin: auto;
+    overflow: hidden;
+    padding: 0 20px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    margin-bottom: 0.75em;
+}
+
+.btn {
+    display: inline-block;
+    background: #5cb85c;
+    color: #fff;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease; /* Added transition for consistency */
+}
+
+.btn:hover {
+    background: #4cae4c;
+}
+
+.btn-danger {
+    background: #d9534f;
+}
+.btn-danger:hover {
+    background: #c9302c;
+}
+
+.btn-secondary {
+    background: #6c757d;
+}
+.btn-secondary:hover {
+    background: #5a6268;
+}
+
+form label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+form input[type="text"],
+form input[type="password"],
+form input[type="email"],
+form input[type="number"],
+form select,
+form textarea {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+table th, table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+table th {
+    background-color: #f2f2f2;
+}
+
+.login-card {
+    width: 350px;
+    margin: 50px auto;
+    padding: 30px;
+    background: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+.login-card img { /* For logo */
+    max-width: 150px;
+    margin-bottom: 20px;
+}
+
+.dashboard-layout {
+    display: flex;
+    gap: 25px; /* Added gap for spacing between sidebar and main content on desktop */
+}
+
+.main-content {
+    flex-grow: 1;
+    /* padding: 20px; This is now handled by the more specific rule at the end of the file */
+}
+
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.4);
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 50%; /* Adjust as needed */
+    border-radius: 5px;
+}
+
+.close-button { /* For closing the modal */
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+.close-button:hover,
+.close-button:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* === Enhanced Sidebar Styling === */
+.sidebar {
+    width: 250px; 
+    background-color: #2c3e50; 
+    color: #ecf0f1; 
+    padding: 20px 0; 
+    min-height: 100vh; 
+    flex-shrink: 0; /* Prevent sidebar from shrinking if content is too wide */
+}
+
+.sidebar h3 {
+    color: #ffffff; 
+    font-size: 1.4em;
+    font-weight: 600;
+    padding: 15px 20px;
+    margin-bottom: 10px;
+    text-align: left;
+}
+
+.sidebar a {
+    display: block;
+    color: #ecf0f1; 
+    padding: 12px 20px; 
+    text-decoration: none;
+    font-size: 1em;
+    transition: background-color 0.3s ease, padding-left 0.3s ease; 
+}
+
+.sidebar a:hover {
+    background-color: #3498db; 
+    color: #ffffff; 
+    padding-left: 25px; 
+}
+
+.sidebar a.active {
+    background-color: #2980b9; 
+    color: #ffffff;
+    font-weight: bold;
+    border-left: 3px solid #ecf0f1; 
+    padding-left: 17px; 
+}
+
+
+/* --- Mobile-Friendly Adjustments --- */
+
+@media (max-width: 768px) {
+    .container {
+        width: 95%;
+    }
+
+    .dashboard-layout {
+        flex-direction: column; 
+        gap: 20px; /* Adjust gap for vertical stacking */
+    }
+
+    .sidebar {
+        width: 100%;        
+        min-height: auto;   
+        margin-bottom: 0; /* Gap from .dashboard-layout handles this now */
+    }
+    .sidebar h3 {
+        text-align: center; 
+    }
+    .sidebar a { 
+        padding: 12px 15px; 
+        border-bottom: 1px solid #34495e; 
+    }
+    .sidebar a:last-child { /* Remove border from last link */
+        border-bottom: none;
+    }
+    .sidebar a:hover {
+        padding-left: 15px; 
+    }
+    .sidebar a.active {
+        padding-left: 15px; 
+        border-left: none; 
+    }
+
+    .main-content {
+        padding: 15px; /* Reduced padding for main content on tablets */
+    }
+
+    .login-card {
+        width: 90%;
+        margin: 30px auto;
+        padding: 20px;
+    }
+
+    .inventory-controls,
+    .report-controls {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    .inventory-controls > div,
+    .report-controls > div {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+    .inventory-controls input[type="text"],
+    .inventory-controls select,
+    .report-controls select,
+    .report-controls input[type="date"] {
+        width: 100%; /* Simpler full width for mobile */
+        margin-bottom:10px;
+    }
+    .inventory-controls button, .report-controls button {
+        width:100%;
+        margin-bottom:5px;
+    }
+    
+    .item-summary-card {
+        flex-direction: column;
+    }
+    .item-summary-card > div {
+        padding-right: 0; 
+        margin-bottom:15px;
+    }
+
+    table {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap; 
+    }
+    table th, table td {
+        white-space: nowrap; 
+    }
+    
+    form input[type="text"],
+    form input[type="password"],
+    form input[type="email"],
+    form input[type="number"],
+    form input[type="date"],
+    form select,
+    form textarea {
+        padding: 12px; 
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        padding: 10px; 
+    }
+    .main-content {
+        padding: 10px; /* Further reduced padding for main content on small mobiles */
+    }
+    .btn { /* Global button adjustment for small screens */
+        padding: 12px 15px; 
+        font-size: 1em;
+    }
+    /* Card-specific button adjustments can be made here if needed,
+       but the global .btn increase is often good for touch. */
+    #dashboard-quick-actions .btn {
+        /* If the global .btn style at this breakpoint is too large for cards,
+           you could refine it here. For example:
+           padding: 10px 12px;
+           font-size: 0.95em;
+        */
+    }
+
+    h1 { font-size: 1.8em; }
+    h2 { font-size: 1.5em; }
+}
+
+/* Conceptual: Floating Action Button (FAB) styling - if we were to add one */
+/* ... (FAB styles remain unchanged) ... */
+
+/* === Dashboard Main Content Styling === */
+
+.main-content h1 { 
+    font-size: 2em; 
+    color: #333;    
+    margin-bottom: 25px;
+    font-weight: 600;
+}
+
+#dashboard-stats,
+#dashboard-quick-actions,
+#dashboard-recent-activity {
+    background-color: #ffffff;
+    border: 1px solid #e0e0e0; 
+    border-radius: 6px;        
+    padding: 20px; /* Adjusted padding for cards */
+    margin-bottom: 25px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05); 
+}
+
+#dashboard-stats h2,
+#dashboard-quick-actions h2,
+#dashboard-recent-activity h2 {
+    font-size: 1.3em;
+    color: #2c3e50; 
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #eee; 
+    font-weight: 600;
+}
+
+#dashboard-stats p {
+    font-size: 1em;
+    line-height: 1.6;
+    color: #555;
+    margin-bottom: 8px;
+}
+#dashboard-stats p strong {
+    color: #3498db; 
+    font-weight: 700;
+    font-size: 1.1em;
+}
+
+/* Refined Quick Actions Button Styling */
+#dashboard-quick-actions .btn {
+    margin-right: 10px; 
+    margin-bottom: 10px; 
+    padding: 8px 15px; /* Slightly smaller padding for card buttons */
+    font-size: 0.9em;  /* Slightly smaller font for card buttons */
+}
+/* Ensure the last button in a row doesn't have a right margin if they are inline-block and wrapping */
+#dashboard-quick-actions .btn:last-of-type {
+    /* margin-right: 0; Only if they are truly inline and not flex items */
+}
+
+
+#dashboard-recent-activity ul {
+    list-style: none; 
+    padding-left: 0;
+}
+
+#dashboard-recent-activity li {
+    padding: 8px 0;
+    border-bottom: 1px dotted #eee; 
+    color: #555;
+    font-size: 0.95em;
+}
+#dashboard-recent-activity li:last-child {
+    border-bottom: none; 
+}
+#dashboard-recent-activity li em { 
+    color: #777;
+    font-style: normal;
+}
+
+#dashboard-recent-activity p { 
+    margin-top: 15px;
+    text-align: right;
+}
+#dashboard-recent-activity p a {
+    color: #3498db;
+    text-decoration: none;
+    font-weight: bold;
+}
+#dashboard-recent-activity p a:hover {
+    text-decoration: underline;
+}
+
+.main-content { /* General main-content padding, ensuring it's consistently applied */
+    padding: 25px; 
+}
+
+/* Conceptual: Floating Action Button (FAB) styling - if we were to add one */
+/*
+.fab {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #5cb85c;
+    color: white;
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    text-align: center;
+    font-size: 24px;
+    line-height: 56px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+    z-index: 1000;
+    text-decoration: none;
+}
+.fab:hover {
+    background-color: #4cae4c;
+}
+*/
