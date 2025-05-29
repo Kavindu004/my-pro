@@ -1,3 +1,13 @@
+<?php
+session_start();
+
+// Check if the user is logged in as admin
+if (!isset($_SESSION['is_admin_loggedin']) || $_SESSION['is_admin_loggedin'] !== true) {
+    // If not logged in, redirect to login page
+    header("Location: login.php");
+    exit; // Important to stop further script execution
+}
+?>
 <?php 
 $pageTitle = "Dashboard - Farm Inventory";
 include 'includes/header.php'; 

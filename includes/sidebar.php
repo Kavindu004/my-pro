@@ -8,5 +8,5 @@
     <a href="settings.php">Settings</a>
     <a href="equipment_log.php">Equipment Log</a>
     <a href="#">---</a> {/* Placeholder for separator or future items */}
-    <a href="login.php?action=logout">Logout</a> {/* Placeholder for logout */}
+    <a href="logout.php">Logout</a> {/* Updated logout link */}
 </div>
