@@ -1,6 +1,39 @@
 <?php
+session_start(); // For Flash Messages
+require_once 'includes/db_connect.php';
+
+$flash_message = null;
+if (isset($_SESSION['flash_message'])) {
+    $flash_message = $_SESSION['flash_message'];
+    unset($_SESSION['flash_message']); // Clear flash message after displaying
+}
+
 $pageTitle = "Inventory - Farm Inventory";
 include 'includes/header.php';
+
+$inventory_items_list = []; // Initialize for safety
+$inventory_error = null;
+
+if ($db_connection) {
+    $sql = "SELECT ii.id, ii.item_name, ii.item_type, ii.quantity, ii.unit_of_measure,
+                   loc.name as location_name, ii.health_status, ii.growth_stage
+            FROM inventory_items ii
+            LEFT JOIN locations loc ON ii.location_id = loc.id
+            ORDER BY ii.item_name ASC";
+
+    $result = mysqli_query($db_connection, $sql);
+
+    if ($result) {
+        while ($row = mysqli_fetch_assoc($result)) {
+            $inventory_items_list[] = $row;
+        }
+        mysqli_free_result($result);
+    } else {
+        $inventory_error = "Error fetching inventory: " . mysqli_error($db_connection);
+    }
+} else {
+    $inventory_error = "Database connection not available.";
+}
 ?>
 
 <div class="dashboard-layout">
@@ -8,6 +41,12 @@ include 'includes/header.php';
 
     <div class="main-content">
         <h1>Inventory List</h1>
+
+        <?php if ($flash_message): ?>
+            <div style="padding: 10px; margin-bottom: 15px; border: 1px solid <?php echo ($flash_message['type'] == 'success' ? 'green' : 'red'); ?>; color: <?php echo ($flash_message['type'] == 'success' ? 'green' : 'red'); ?>; background-color: <?php echo ($flash_message['type'] == 'success' ? '#e6ffe6' : '#ffe6e6'); ?>;">
+                <?php echo htmlspecialchars($flash_message['text']); ?>
+            </div>
+        <?php endif; ?>
 
         <div class="inventory-controls" style="margin-bottom: 20px; padding: 15px; background-color:#fff; border:1px solid #eee; display: flex; justify-content: space-between; align-items: center;">
             <div>
@@ -46,34 +85,38 @@ include 'includes/header.php';
                 </tr>
             </thead>
             <tbody>
-                <?php
-                // Placeholder data - In a real application, this would come from a database
-                $inventoryItems = [
-                    ['id' => '001', 'name' => 'Holstein Cow', 'type' => 'Animal', 'quantity' => 15, 'location' => 'Barn A', 'status' => 'Healthy'],
-                    ['id' => '002', 'name' => 'Wheat Grain', 'type' => 'Crop', 'quantity' => '200 kg', 'location' => 'Silo 3', 'status' => 'Good'],
-                    ['id' => '003', 'name' => 'Tractor John D.', 'type' => 'Equipment', 'quantity' => 1, 'location' => 'Shed 1', 'status' => 'Operational'],
-                    ['id' => '004', 'name' => 'Chicken Feed', 'type' => 'Supplies', 'quantity' => '12 bags', 'location' => 'Storage B', 'status' => 'Low Stock'],
-                ];
-
-                if (!empty($inventoryItems)) {
-                    foreach ($inventoryItems as $item) {
-                        echo "<tr>";
-                        echo "<td>" . htmlspecialchars($item['id']) . "</td>";
-                        echo "<td>" . htmlspecialchars($item['name']) . "</td>";
-                        echo "<td>" . htmlspecialchars($item['type']) . "</td>";
-                        echo "<td>" . htmlspecialchars($item['quantity']) . "</td>";
-                        echo "<td>" . htmlspecialchars($item['location']) . "</td>";
-                        echo "<td>" . htmlspecialchars($item['status']) . "</td>";
-                        echo "<td>";
-                        echo "<a href='edit_item.php?id=" . htmlspecialchars($item['id']) . "' class='btn btn-secondary' style='margin-right: 5px; padding: 5px 10px;'>Edit</a>";
-                        echo "<a href='#' class='btn btn-danger' style='padding: 5px 10px;' onclick='return confirm(\"Are you sure you want to delete this item?\");'>Delete</a>";
-                        echo "</td>";
-                        echo "</tr>";
-                    }
-                } else {
-                    echo "<tr><td colspan='7'>No inventory items found.</td></tr>";
-                }
-                ?>
+                <?php if ($inventory_error): ?>
+                    <tr><td colspan="7" style="color: red; text-align: center;"><?php echo htmlspecialchars($inventory_error); ?></td></tr>
+                <?php elseif (!empty($inventory_items_list)): ?>
+                    <?php foreach ($inventory_items_list as $item): ?>
+                    <tr>
+                        <td><?php echo htmlspecialchars($item['id']); ?></td>
+                        <td><?php echo htmlspecialchars($item['item_name']); ?></td>
+                        <td><?php echo htmlspecialchars($item['item_type']); ?></td>
+                        <td><?php echo htmlspecialchars(is_numeric($item['quantity']) ? rtrim(rtrim(number_format($item['quantity'], 2), '0'), '.') : $item['quantity']) . ($item['unit_of_measure'] ? ' ' . htmlspecialchars($item['unit_of_measure']) : ''); ?></td>
+                        <td><?php echo htmlspecialchars($item['location_name'] ? $item['location_name'] : 'N/A'); ?></td>
+                        <td>
+                            <?php
+                            if ($item['item_type'] == 'Animal' && !empty($item['health_status'])) {
+                                echo htmlspecialchars($item['health_status']);
+                            } elseif ($item['item_type'] == 'Crop' && !empty($item['growth_stage'])) {
+                                echo htmlspecialchars($item['growth_stage']);
+                            } else {
+                                if (empty($item['health_status']) && empty($item['growth_stage'])) {
+                                    echo 'Available';
+                                }
+                            }
+                            ?>
+                        </td>
+                        <td>
+                            <a href="edit_item.php?id=<?php echo htmlspecialchars($item['id']); ?>" class="btn btn-secondary" style="margin-right: 5px; padding: 5px 10px;">Edit</a>
+                            <a href="#" class="btn btn-danger" style="padding: 5px 10px;" onclick="return confirm('Are you sure you want to delete this item ID: <?php echo htmlspecialchars($item['id']); ?>? This action is not yet functional.');">Delete</a>
+                        </td>
+                    </tr>
+                    <?php endforeach; ?>
+                <?php else: ?>
+                    <tr><td colspan="7">No inventory items found. <?php if ($db_connection) echo '<a href="add_item.php">Add some items?</a>'; ?></td></tr>
+                <?php endif; ?>
             </tbody>
         </table>
 
