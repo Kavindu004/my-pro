@@ -148,16 +148,16 @@ table th {
 
 /* === Enhanced Sidebar Styling === */
 .sidebar {
-    width: 250px; 
-    background-color: #2c3e50; 
-    color: #ecf0f1; 
-    padding: 20px 0; 
-    min-height: 100vh; 
+    width: 250px;
+    background-color: #2c3e50;
+    color: #ecf0f1;
+    padding: 20px 0;
+    min-height: 100vh;
     flex-shrink: 0; /* Prevent sidebar from shrinking if content is too wide */
 }
 
 .sidebar h3 {
-    color: #ffffff; 
+    color: #ffffff;
     font-size: 1.4em;
     font-weight: 600;
     padding: 15px 20px;
@@ -167,25 +167,25 @@ table th {
 
 .sidebar a {
     display: block;
-    color: #ecf0f1; 
-    padding: 12px 20px; 
+    color: #ecf0f1;
+    padding: 12px 20px;
     text-decoration: none;
     font-size: 1em;
-    transition: background-color 0.3s ease, padding-left 0.3s ease; 
+    transition: background-color 0.3s ease, padding-left 0.3s ease;
 }
 
 .sidebar a:hover {
-    background-color: #3498db; 
-    color: #ffffff; 
-    padding-left: 25px; 
+    background-color: #3498db;
+    color: #ffffff;
+    padding-left: 25px;
 }
 
 .sidebar a.active {
-    background-color: #2980b9; 
+    background-color: #2980b9;
     color: #ffffff;
     font-weight: bold;
-    border-left: 3px solid #ecf0f1; 
-    padding-left: 17px; 
+    border-left: 3px solid #ecf0f1;
+    padding-left: 17px;
 }
 
 
@@ -197,31 +197,31 @@ table th {
     }
 
     .dashboard-layout {
-        flex-direction: column; 
+        flex-direction: column;
         gap: 20px; /* Adjust gap for vertical stacking */
     }
 
     .sidebar {
-        width: 100%;        
-        min-height: auto;   
+        width: 100%;
+        min-height: auto;
         margin-bottom: 0; /* Gap from .dashboard-layout handles this now */
     }
     .sidebar h3 {
-        text-align: center; 
+        text-align: center;
     }
-    .sidebar a { 
-        padding: 12px 15px; 
-        border-bottom: 1px solid #34495e; 
+    .sidebar a {
+        padding: 12px 15px;
+        border-bottom: 1px solid #34495e;
     }
     .sidebar a:last-child { /* Remove border from last link */
         border-bottom: none;
     }
     .sidebar a:hover {
-        padding-left: 15px; 
+        padding-left: 15px;
     }
     .sidebar a.active {
-        padding-left: 15px; 
-        border-left: none; 
+        padding-left: 15px;
+        border-left: none;
     }
 
     .main-content {
@@ -255,24 +255,24 @@ table th {
         width:100%;
         margin-bottom:5px;
     }
-    
+
     .item-summary-card {
         flex-direction: column;
     }
     .item-summary-card > div {
-        padding-right: 0; 
+        padding-right: 0;
         margin-bottom:15px;
     }
 
     table {
         display: block;
         overflow-x: auto;
-        white-space: nowrap; 
+        white-space: nowrap;
     }
     table th, table td {
-        white-space: nowrap; 
+        white-space: nowrap;
     }
-    
+
     form input[type="text"],
     form input[type="password"],
     form input[type="email"],
@@ -280,19 +280,19 @@ table th {
     form input[type="date"],
     form select,
     form textarea {
-        padding: 12px; 
+        padding: 12px;
     }
 }
 
 @media (max-width: 480px) {
     body {
-        padding: 10px; 
+        padding: 10px;
     }
     .main-content {
         padding: 10px; /* Further reduced padding for main content on small mobiles */
     }
     .btn { /* Global button adjustment for small screens */
-        padding: 12px 15px; 
+        padding: 12px 15px;
         font-size: 1em;
     }
     /* Card-specific button adjustments can be made here if needed,
@@ -314,9 +314,9 @@ table th {
 
 /* === Dashboard Main Content Styling === */
 
-.main-content h1 { 
-    font-size: 2em; 
-    color: #333;    
+.main-content h1 {
+    font-size: 2em;
+    color: #333;
     margin-bottom: 25px;
     font-weight: 600;
 }
@@ -325,21 +325,21 @@ table th {
 #dashboard-quick-actions,
 #dashboard-recent-activity {
     background-color: #ffffff;
-    border: 1px solid #e0e0e0; 
-    border-radius: 6px;        
+    border: 1px solid #e0e0e0;
+    border-radius: 6px;
     padding: 20px; /* Adjusted padding for cards */
     margin-bottom: 25px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05); 
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
 }
 
 #dashboard-stats h2,
 #dashboard-quick-actions h2,
 #dashboard-recent-activity h2 {
     font-size: 1.3em;
-    color: #2c3e50; 
+    color: #2c3e50;
     margin-bottom: 15px;
     padding-bottom: 10px;
-    border-bottom: 1px solid #eee; 
+    border-bottom: 1px solid #eee;
     font-weight: 600;
 }
 
@@ -350,15 +350,15 @@ table th {
     margin-bottom: 8px;
 }
 #dashboard-stats p strong {
-    color: #3498db; 
+    color: #3498db;
     font-weight: 700;
     font-size: 1.1em;
 }
 
 /* Refined Quick Actions Button Styling */
 #dashboard-quick-actions .btn {
-    margin-right: 10px; 
-    margin-bottom: 10px; 
+    margin-right: 10px;
+    margin-bottom: 10px;
     padding: 8px 15px; /* Slightly smaller padding for card buttons */
     font-size: 0.9em;  /* Slightly smaller font for card buttons */
 }
@@ -369,25 +369,25 @@ table th {
 
 
 #dashboard-recent-activity ul {
-    list-style: none; 
+    list-style: none;
     padding-left: 0;
 }
 
 #dashboard-recent-activity li {
     padding: 8px 0;
-    border-bottom: 1px dotted #eee; 
+    border-bottom: 1px dotted #eee;
     color: #555;
     font-size: 0.95em;
 }
 #dashboard-recent-activity li:last-child {
-    border-bottom: none; 
+    border-bottom: none;
 }
-#dashboard-recent-activity li em { 
+#dashboard-recent-activity li em {
     color: #777;
     font-style: normal;
 }
 
-#dashboard-recent-activity p { 
+#dashboard-recent-activity p {
     margin-top: 15px;
     text-align: right;
 }
@@ -401,7 +401,7 @@ table th {
 }
 
 .main-content { /* General main-content padding, ensuring it's consistently applied */
-    padding: 25px; 
+    padding: 25px;
 }
 
 /* Conceptual: Floating Action Button (FAB) styling - if we were to add one */
@@ -444,11 +444,11 @@ table th {
 
     /* Placeholder background: Replace with your image URL */
     /* Example using a farm-like gradient */
-    background: linear-gradient(135deg, #56ab2f 0%, #a8e063 60%, #86A8E7 100%); 
+    background: linear-gradient(135deg, #56ab2f 0%, #a8e063 60%, #86A8E7 100%);
     /* background-image: url('path/to/your/farm-background-image.jpg'); */
     background-size: cover;
     background-position: center;
-    
+
     filter: blur(8px); /* Adjust blur amount as needed */
     transform: scale(1.1); /* Optional: scale slightly to avoid blurred edges appearing due to blur */
 }

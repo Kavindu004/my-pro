@@ -8,9 +8,9 @@ if (!isset($_SESSION['is_admin_loggedin']) || $_SESSION['is_admin_loggedin'] !==
     exit; // Important to stop further script execution
 }
 ?>
-<?php 
+<?php
 $pageTitle = "Farm Settings - Farm Inventory";
-include 'includes/header.php'; 
+include 'includes/header.php';
 
 // Placeholder for current settings (would be fetched from a database)
 $currentSettings = [
@@ -33,7 +33,7 @@ $users = [
     <div class="main-content">
         <h1>Farm Settings</h1>
 
-        <form action="settings.php" method="POST"> {/* Action to handle settings update */}
+        <form action="settings.php" method="POST">
             <div class="settings-section" style="margin-bottom: 30px; padding:20px; background-color:#fff; border:1px solid #eee; border-radius: 5px;">
                 <h2>Farm Profile</h2>
                 <div>
@@ -69,21 +69,21 @@ $users = [
                         <td><?php echo htmlspecialchars($user['email']); ?></td>
                         <td><?php echo htmlspecialchars($user['role']); ?></td>
                         <td>
-                            <a href="#" class="btn btn-secondary btn-sm" style="padding: 5px 10px;">Edit</a> 
-                            {/* Add more actions like 'Delete' or 'Change Role' if needed, with appropriate confirmations */}
+                            <a href="#" class="btn btn-secondary btn-sm" style="padding: 5px 10px;">Edit</a>
+
                         </td>
                     </tr>
                     <?php endforeach; ?>
                 </tbody>
             </table>
-            <button class="btn" style="margin-top:15px;">Add New User</button> {/* This would typically lead to a form or modal */}
+            <button class="btn" style="margin-top:15px;">Add New User</button>
         </div>
 
         <div class="settings-section" style="padding:20px; background-color:#fff; border:1px solid #eee; border-radius: 5px;">
             <h2>System Tools</h2>
             <p>Manage integrations and data backups.</p>
-            <button class="btn btn-secondary" style="margin-right: 10px;">Integration Settings</button> {/* Placeholder */}
-            <button class="btn btn-secondary">Backup Data</button> {/* Placeholder */}
+            <button class="btn btn-secondary" style="margin-right: 10px;">Integration Settings</button>
+            <button class="btn btn-secondary">Backup Data</button>
         </div>
     </div>
 </div>

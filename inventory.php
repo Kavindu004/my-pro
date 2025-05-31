@@ -1,6 +1,6 @@
-<?php 
+<?php
 $pageTitle = "Inventory - Farm Inventory";
-include 'includes/header.php'; 
+include 'includes/header.php';
 ?>
 
 <div class="dashboard-layout">
@@ -46,7 +46,7 @@ include 'includes/header.php';
                 </tr>
             </thead>
             <tbody>
-                <?php 
+                <?php
                 // Placeholder data - In a real application, this would come from a database
                 $inventoryItems = [
                     ['id' => '001', 'name' => 'Holstein Cow', 'type' => 'Animal', 'quantity' => 15, 'location' => 'Barn A', 'status' => 'Healthy'],
@@ -76,7 +76,7 @@ include 'includes/header.php';
                 ?>
             </tbody>
         </table>
-        
+
     </div>
 </div>
 

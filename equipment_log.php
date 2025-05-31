@@ -1,9 +1,9 @@
-<?php 
+<?php
 $pageTitle = "Equipment Maintenance Log - Farm Inventory";
-include 'includes/header.php'; 
+include 'includes/header.php';
 
 // Placeholder for selected equipment (In a real app, you'd get an equipment ID and fetch its data)
-$equipmentName = "Tractor #3 - John Deere 5075E"; 
+$equipmentName = "Tractor #3 - John Deere 5075E";
 $equipmentDetails = [
     'last_service_date' => 'March 15, 2023',
     'last_service_hours' => '50 hrs',
@@ -24,11 +24,11 @@ $maintenanceHistory = [
 
     <div class="main-content">
         <h1>Equipment Maintenance Log</h1>
-        
+
         <div class="equipment-select-section" style="margin-bottom: 20px;">
             <label for="select_equipment" style="margin-right:10px;">Select Equipment:</label>
             <select id="select_equipment" name="select_equipment" style="padding:8px; min-width: 300px;">
-                {/* In a real app, this would be populated from the database */}
+
                 <option value="tractor3"><?php echo htmlspecialchars($equipmentName); ?> (Currently Selected)</option>
                 <option value="tractor1">Tractor #1 - Massey Ferguson</option>
                 <option value="harvester1">Combine Harvester CX2</option>
@@ -41,14 +41,14 @@ $maintenanceHistory = [
             <h2><?php echo htmlspecialchars($equipmentName); ?></h2>
             <p><strong>Last Service:</strong> <?php echo htmlspecialchars($equipmentDetails['last_service_date']); ?> (<?php echo htmlspecialchars($equipmentDetails['last_service_hours']); ?>)</p>
             <p><strong>Next Service Due:</strong> <?php echo htmlspecialchars($equipmentDetails['next_service_due_date']); ?> or <?php echo htmlspecialchars($equipmentDetails['next_service_due_hours']); ?></p>
-            {/* Add more details like Purchase Date, Model, Serial Number etc. if available */}
+
         </div>
 
         <div class="maintenance-history-section" style="padding:20px; background-color:#fff; border:1px solid #eee; border-radius: 5px;">
             <h3>Maintenance History</h3>
             <div style="margin-bottom:15px;">
-                <a href="#add-service-form" class="btn">Add Service Record</a> {/* Links to a form below or a modal */}
-                <button class="btn btn-secondary">Upload Documents</button> {/* Placeholder for document upload functionality */}
+                <a href="#add-service-form" class="btn">Add Service Record</a>
+                <button class="btn btn-secondary">Upload Documents</button>
             </div>
             <table>
                 <thead>
@@ -75,12 +75,12 @@ $maintenanceHistory = [
                 </tbody>
             </table>
         </div>
-        
-        {/* Placeholder for Add Service Record Form (could be a modal or revealed section) */}
+
+
         <div id="add-service-form" style="margin-top: 30px; padding:20px; background-color:#f9f9f9; border:1px solid #ddd; border-radius: 5px; display:none;">
              <h4>Add New Service Record for <?php echo htmlspecialchars($equipmentName); ?></h4>
              <form action="equipment_log.php" method="POST">
-                 <input type="hidden" name="equipment_id" value="tractor3"> {/* Selected equipment ID */}
+                 <input type="hidden" name="equipment_id" value="tractor3">
                  <div>
                      <label for="service_date">Service Date:</label>
                      <input type="date" id="service_date" name="service_date" required>

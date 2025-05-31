@@ -1,4 +1,4 @@
-<?php 
+<?php
 $pageTitle = "Edit Item - Farm Inventory";
 $itemId = isset($_GET['id']) ? htmlspecialchars($_GET['id']) : 'N/A'; // Get item ID from URL
 
@@ -18,7 +18,7 @@ if ($itemId === '001') { // Example: if ID is 001 (Holstein Cow from inventory.p
 
 $itemType = $item['item_type']; // Set itemType for conditional fields logic
 
-include 'includes/header.php'; 
+include 'includes/header.php';
 ?>
 
 <div class="dashboard-layout">
@@ -27,9 +27,9 @@ include 'includes/header.php';
     <div class="main-content">
         <h1>Edit Inventory Item (ID: <?php echo $item['id']; ?>)</h1>
         <form action="inventory.php" method="POST" style="padding: 20px; background-color: #fff; border: 1px solid #eee; border-radius: 5px;">
-            {/* The action will eventually point to a script that updates the item data */}
+
             <input type="hidden" name="item_id" value="<?php echo $item['id']; ?>">
-            
+
             <div>
                 <label for="item_type">Item Type:</label>
                 <select id="item_type" name="item_type" required>
@@ -75,7 +75,7 @@ include 'includes/header.php';
                 <label for="growth_stage">Growth Stage (For Crops):</label>
                 <input type="text" id="growth_stage" name="growth_stage" value="<?php echo htmlspecialchars($item['growth_stage']); ?>" placeholder="e.g., Seedling, Vegetative, Flowering, Harvest">
             </div>
-            
+
             <div>
                 <label for="date_acquired">Date Acquired/Planted:</label>
                 <input type="date" id="date_acquired" name="date_acquired" value="<?php echo htmlspecialchars($item['date_acquired']); ?>">

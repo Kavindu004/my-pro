@@ -1,9 +1,9 @@
-<?php 
+<?php
 $pageTitle = "Item Detail - Farm Inventory";
-include 'includes/header.php'; 
+include 'includes/header.php';
 
 // Placeholder for item ID (In a real app, you'd get an item ID from GET/POST and fetch its data)
-$itemId = isset($_GET['id']) ? htmlspecialchars($_GET['id']) : 'SAMPLE001'; 
+$itemId = isset($_GET['id']) ? htmlspecialchars($_GET['id']) : 'SAMPLE001';
 
 // Placeholder for item data (would be fetched from a database based on $itemId)
 $itemDetails = [
@@ -37,7 +37,7 @@ $transactionHistory = [
         <div class="item-actions" style="margin-bottom: 20px;">
             <a href="edit_item.php?id=<?php echo $itemId; ?>" class="btn">Edit Item</a>
             <a href="inventory.php?action=delete&id=<?php echo $itemId; ?>" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this item?');">Delete Item</a>
-            <a href="#add-transaction-form" class="btn btn-secondary">Add Transaction</a> {/* Links to a form/modal */}
+            <a href="#add-transaction-form" class="btn btn-secondary">Add Transaction</a>
         </div>
 
         <div class="item-summary-card" style="margin-bottom: 30px; padding:20px; background-color:#fff; border:1px solid #eee; border-radius: 5px; display:flex; flex-wrap:wrap;">
@@ -86,8 +86,8 @@ $transactionHistory = [
                 </tbody>
             </table>
         </div>
-        
-        {/* Placeholder for Add Transaction Form (could be a modal or revealed section) */}
+
+
         <div id="add-transaction-form" style="margin-top: 30px; padding:20px; background-color:#f9f9f9; border:1px solid #ddd; border-radius: 5px; display:none;">
              <h4>Add New Transaction for <?php echo htmlspecialchars($itemDetails['name']); ?></h4>
              <form action="item_detail.php?id=<?php echo $itemId; ?>" method="POST">

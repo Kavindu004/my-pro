@@ -39,7 +39,7 @@ CREATE TABLE inventory_items (
     date_acquired DATE,
     purchase_price DECIMAL(10, 2),
     supplier VARCHAR(255),
-    
+
     -- Animal Specific Fields (NULLable if not an animal)
     health_status VARCHAR(100), -- e.g., Healthy, Sick, Under Treatment
     breed VARCHAR(100), -- For animals
@@ -48,7 +48,7 @@ CREATE TABLE inventory_items (
     growth_stage VARCHAR(100), -- e.g., Seedling, Vegetative, Harvested
     planting_date DATE, -- For crops
     expected_harvest_date DATE, -- For crops
-    
+
     -- Equipment Specific Fields (NULLable if not equipment)
     serial_number VARCHAR(255),
     model VARCHAR(255),
@@ -59,7 +59,7 @@ CREATE TABLE inventory_items (
     reorder_level DECIMAL(10,2) DEFAULT 0.00,
     last_updated TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    
+
     FOREIGN KEY (location_id) REFERENCES locations(id) ON DELETE SET NULL -- Allow item to exist if location is deleted
 );
 
@@ -74,7 +74,7 @@ CREATE TABLE maintenance_logs (
     performed_by VARCHAR(255),
     notes TEXT,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    
+
     FOREIGN KEY (equipment_id) REFERENCES inventory_items(id) ON DELETE CASCADE -- If equipment is deleted, its logs are deleted
 );
 
@@ -88,7 +88,7 @@ CREATE TABLE item_transactions (
     related_to_reference VARCHAR(255), -- e.g., Order ID, Batch No, Event
     notes TEXT,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    
+
     FOREIGN KEY (item_id) REFERENCES inventory_items(id) ON DELETE CASCADE -- If item is deleted, its transactions are deleted
 );
 

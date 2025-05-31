@@ -1,9 +1,9 @@
-<?php 
+<?php
 $pageTitle = "Add New Item - Farm Inventory";
 // You might want to pre-fill item type based on a GET parameter, e.g., from dashboard quick links
-$itemType = isset($_GET['type']) ? htmlspecialchars($_GET['type']) : ''; 
+$itemType = isset($_GET['type']) ? htmlspecialchars($_GET['type']) : '';
 
-include 'includes/header.php'; 
+include 'includes/header.php';
 ?>
 
 <div class="dashboard-layout">
@@ -12,8 +12,8 @@ include 'includes/header.php';
     <div class="main-content">
         <h1>Add New Inventory Item</h1>
         <form action="inventory.php" method="POST" style="padding: 20px; background-color: #fff; border: 1px solid #eee; border-radius: 5px;">
-            {/* The action will eventually point to a script that processes the form data */}
-            
+
+
             <div>
                 <label for="item_type">Item Type:</label>
                 <select id="item_type" name="item_type" required>
@@ -34,7 +34,7 @@ include 'includes/header.php';
                 <label for="quantity">Quantity:</label>
                 <input type="number" id="quantity" name="quantity" required min="0">
             </div>
-            
+
             <div>
                 <label for="unit_of_measure">(e.g., head, kg, items, bags)</label>
                 <input type="text" id="unit_of_measure" name="unit_of_measure" placeholder="Unit (e.g., head, kg, bags)">
@@ -42,7 +42,7 @@ include 'includes/header.php';
 
             <div>
                 <label for="location">Location:</label>
-                {/* This could be a dropdown populated from a 'locations' table in the future */}
+
                 <input type="text" id="location" name="location" placeholder="e.g., Barn A, Field 3, Shed 1">
             </div>
 
@@ -60,7 +60,7 @@ include 'includes/header.php';
                 <label for="growth_stage">Growth Stage (For Crops):</label>
                 <input type="text" id="growth_stage" name="growth_stage" placeholder="e.g., Seedling, Vegetative, Flowering, Harvest">
             </div>
-            
+
             <div>
                 <label for="date_acquired">Date Acquired/Planted:</label>
                 <input type="date" id="date_acquired" name="date_acquired">

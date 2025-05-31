@@ -10,9 +10,9 @@ $db_connection = mysqli_connect(DB_SERVER, DB_USERNAME, DB_PASSWORD, DB_NAME);
 
 // Check connection
 if ($db_connection === false) {
-    // Connection failed, handle error 
+    // Connection failed, handle error
     // Set $db_connection to null, pages can check for this.
-    $db_connection = null; 
+    $db_connection = null;
     // Optional: log the actual error to the server's error log for debugging
     // if (function_exists('error_log')) {
     //    error_log("MySQL Connection Error: " . mysqli_connect_error());
@@ -27,7 +27,7 @@ if ($db_connection === false) {
     }
 }
 
-// Note: No explicit mysqli_close($db_connection) here, 
+// Note: No explicit mysqli_close($db_connection) here,
 // PHP will automatically close the connection at the end of the script execution.
 // If you need to close it earlier for specific reasons, you would call it explicitly.
 ?>

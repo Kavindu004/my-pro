@@ -23,20 +23,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 }
 
-$pageTitle = "Login - Farm Inventory"; 
-$bodyClass = "login-page-body"; 
-include 'includes/header.php'; 
+$pageTitle = "Login - Farm Inventory";
+$bodyClass = "login-page-body";
+include 'includes/header.php';
 ?>
 
 <div class="login-card">
-    <img src="images/logo_placeholder.png" alt="Farm Logo"> 
+    <img src="images/logo_placeholder.png" alt="Farm Logo">
     <h2>Login</h2>
 
     <?php if ($login_error): ?>
         <p style="color: red; margin-bottom: 15px;"><?php echo htmlspecialchars($login_error); ?></p>
     <?php endif; ?>
 
-    <form action="login.php" method="POST"> {/* Action should point to login.php itself to process */}
+    <form action="login.php" method="POST">
         <div>
             <label for="username">Username:</label>
             <input type="text" id="username" name="username" required value="<?php echo isset($_POST['username']) ? htmlspecialchars($_POST['username']) : ''; ?>">
@@ -49,7 +49,7 @@ include 'includes/header.php';
             <button type="submit" class="btn">Login</button>
         </div>
         <div style="margin-top: 15px;">
-            <a href="#">Forgot Password?</a> {/* This link is still non-functional */}
+            <a href="#">Forgot Password?</a>
         </div>
     </form>
 </div>

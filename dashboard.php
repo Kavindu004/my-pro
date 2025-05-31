@@ -25,7 +25,7 @@ if ($db_connection) { // Check if database connection is established
         mysqli_free_result($result_animals);
     } else {
         // Query failed or no rows, keep placeholder or set to "N/A" or 0
-        $animal_count_display = "0 (Error)"; 
+        $animal_count_display = "0 (Error)";
     }
 
     // Fetch Crop Count (Number of distinct crop types or total crop items)
@@ -37,12 +37,12 @@ if ($db_connection) { // Check if database connection is established
         // The wireframe says "45 fields", which is different from item count.
         // For now, we'll display the count of 'Crop' type items.
         // This could be refined later if "fields" means something else (e.g., distinct locations for crops).
-        $crop_fields_display = $row_crops['total_crops'] . " crop items"; 
+        $crop_fields_display = $row_crops['total_crops'] . " crop items";
         mysqli_free_result($result_crops);
     } else {
         $crop_fields_display = "0 crop items (Error)";
     }
-    
+
     // Note: $db_connection is usually closed automatically at script end.
 } else {
     // $db_connection was null, use fallback messages
@@ -51,19 +51,19 @@ if ($db_connection) { // Check if database connection is established
 }
 
 $pageTitle = "Dashboard - Farm Inventory";
-include 'includes/header.php'; 
+include 'includes/header.php';
 ?>
 
 <div class="dashboard-layout">
     <?php include 'includes/sidebar.php'; ?>
 
     <div class="main-content">
-        <h1>Welcome, [User]!</h1> {/* Placeholder for username */}
-        
+        <h1>Welcome, [User]!</h1>
+
         <div id="dashboard-stats">
             <h2>Quick Stats</h2>
             <p>Total Animals: <strong><?php echo $animal_count_display; ?></strong></p>
-            <p>Total Crop Fields/Items: <strong><?php echo $crop_fields_display; ?></strong></p> 
+            <p>Total Crop Fields/Items: <strong><?php echo $crop_fields_display; ?></strong></p>
             <p>Low Stock Alerts: <strong>3</strong> (Placeholder - to be implemented later)</p>
         </div>
 

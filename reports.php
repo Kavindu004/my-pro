@@ -1,6 +1,6 @@
-<?php 
+<?php
 $pageTitle = "Reports & Analytics - Farm Inventory";
-include 'includes/header.php'; 
+include 'includes/header.php';
 ?>
 
 <div class="dashboard-layout">
@@ -19,7 +19,6 @@ include 'includes/header.php';
                     <option value="current_year">Current Year</option>
                     <option value="custom">Custom Range</option>
                 </select>
-                {/* Add input fields for custom date range, initially hidden */}
                 <input type="date" id="custom_date_start" name="custom_date_start" style="display:none; padding: 8px; margin-left:5px;">
                 <input type="date" id="custom_date_end" name="custom_date_end" style="display:none; padding: 8px;">
                 <button class="btn btn-secondary" style="padding: 8px 15px; margin-left:10px;">Generate</button>
@@ -36,7 +35,7 @@ include 'includes/header.php';
                 [Stock Levels Chart Area - e.g., Bar Chart showing quantity by item or category]
             </div>
         </div>
-        
+
         <div class="report-section" style="margin-bottom: 30px; padding:15px; background-color:#fff; border:1px solid #eee;">
             <h2>Chart Placeholder: Productivity Trends</h2>
             <div style="width:100%; height:200px; background-color:#e0e0e0; display:flex; align-items:center; justify-content:center; text-align:center;">
@@ -85,7 +84,7 @@ include 'includes/header.php';
                 <small><em>Note: Values are estimates for demonstration purposes. Actual valuation would require detailed accounting.</em></small>
             </p>
         </div>
-        
+
         <script>
             // Show/hide custom date inputs
             document.getElementById('date_range_selector').addEventListener('change', function() {
